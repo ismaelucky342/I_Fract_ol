@@ -6,8 +6,9 @@
 # include <mlx.h>
 # include "../libft/libft.h"
 
-# define WIDTH	800
-# define HEIGHT	800
+# define NUM_THREADS 8  // Número de hilos a utilizar
+# define WIDTH	1000
+# define HEIGHT	1000
 
 typedef struct pos
 {
@@ -37,6 +38,12 @@ typedef struct s_data
 	t_img			img;
 }	t_data;
 
+typedef struct s_thread_data {
+    t_data  *data;
+    int     start_y;  // Línea inicial
+    int     end_y;    // Línea final
+} t_thread_data;
+
 typedef struct s_complex
 {
 	double	r;
@@ -53,5 +60,6 @@ double	map(double ratio, double b1, double b2);
 double	calculate_ratio(double y, double a1, double a2);
 int		calc_bright(t_complex *z, t_complex *c, t_data *d);
 int		mouse_hook(int mouse_code, int x, int y, t_data *data);
-void	draw_newton(t_data *data, int x, int y);
+void	draw_burning_ship(t_data *data, int x, int y);
+void	draw_mandelbox(t_data *data, int x, int y);
 #endif

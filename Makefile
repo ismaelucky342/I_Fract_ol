@@ -19,6 +19,8 @@ SRC_PATH	=	src/
 SRC			=	main.c \
 				render.c \
 				mandelbrot.c \
+				burning_ship.c \
+				mandelbox.c \
 				julia.c \
 				window_settings.c 
 
@@ -61,7 +63,7 @@ $(NAME): $(OBJS)
 	@echo "╚════██║██╔═══╝     ██╔══╝  ██╔══██╗██╔══██║██║        ██║╚════╝██║   ██║██║      "
 	@echo "     ██║███████╗    ██║     ██║  ██║██║  ██║╚██████╗   ██║      ╚██████╔╝███████╗ "
 	@echo "     ╚═╝╚══════╝    ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝   ╚═╝       ╚═════╝ ╚══════╝ "
-	@echo "               				2024/05/01 - ismherna@student.42.fr - 42 Madrid - Ismael Hernández      "                                                                                                                                       
+	@echo "              2024/05/01 - ismherna@student.42.fr - 42 Madrid - Ismael Hernández      "                                                                                                                                       
                                                                                                                                              
 
 bonus: all
