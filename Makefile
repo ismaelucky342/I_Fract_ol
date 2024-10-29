@@ -3,20 +3,25 @@ NAME	= fractol
 CC		= gcc
 CFLAGS	= -Werror -Wextra -Wall
 
-MLX_PATH	= includes/minilibx-linux/
+MLX_PATH	= mlx/
 MLX_NAME	= libmlx.a
 MLX			= $(MLX_PATH)$(MLX_NAME)
 
-LIBFT_PATH	= includes/Libft/
+LIBFT_PATH	= libft/
 LIBFT_NAME	= libft.a
 LIBFT		= $(LIBFT_PATH)$(LIBFT_NAME)
 
 INC			=	-I ./includes/\
-				-I ./Libft/\
+				-I ./libft/\
 				-I ./mlx/
 
 SRC_PATH	=	src/
-SRC			=	
+SRC			=	main.c \
+				render.c \
+				mandelbrot.c \
+				julia.c \
+				window_settings.c 
+
 SRCS		= $(addprefix $(SRC_PATH), $(SRC))
 
 # Objects
@@ -33,7 +38,8 @@ $(OBJS): $(OBJ_PATH)
 
 $(OBJ_PATH):
 	@mkdir $(OBJ_PATH)
-
+	@mkdir $(OBJ_PATH)fractal_sets/
+	@mkdir $(OBJ_PATH)color_schemes/
 
 $(MLX):
 	@echo "Making MiniLibX..."
@@ -48,15 +54,14 @@ $(NAME): $(OBJS)
 	@echo "Compiling fractol..."
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX) $(LIBFT) $(INC) -lXext -lX11 -lm
 	@echo "Fractol ready."
-	@echo " ___   ___       _______          ________  ________      ________      ________      _________                   ________      ___              "
-	@echo "|\  \ |\  \     /  ___  \        |\  _____\|\   __  \    |\   __  \    |\   ____\    |\___   ___\                |\   __  \    |\  \             "
-	@echo "\ \  \\_\  \   /__/|_/  /|       \ \  \__/ \ \  \|\  \   \ \  \|\  \   \ \  \___|    \|___ \  \_|  ____________  \ \  \|\  \   \ \  \        	"
-	@echo " \ \______  \  |__|//  / /        \ \   __\ \ \   _  _\   \ \   __  \   \ \  \            \ \  \  |\____________\ \ \  \\\  \   \ \  \       	"
-	@echo "  \|_____|\  \     /  /_/__        \ \  \_|  \ \  \\  \|   \ \  \ \  \   \ \  \____        \ \  \ \|____________|  \ \  \\\  \   \ \  \____  	"
-	@echo "         \ \__\   |\________\       \ \__\    \ \__\\ _\    \ \__\ \__\   \ \_______\       \ \__\                  \ \_______\   \ \_______\	"
-	@echo "          \|__|    \|_______|        \|__|     \|__|\|__|    \|__|\|__|    \|_______|        \|__|                   \|_______|    \|_______|	"
-	@echo "                                                                                                                                                 "
-	@echo "                       							2024/09/13 - oalsadi-@student.42.fr - 42 Madrid - Omar Alsadi Sanchez      "                                                                                                                                       
+	@echo " "
+	@echo "██╗  ██╗██████╗     ███████╗██████╗  █████╗  ██████╗████████╗    ██████╗ ██╗      "
+	@echo "██║  ██║╚════██╗    ██╔════╝██╔══██╗██╔══██╗██╔════╝╚══██╔══╝   ██╔═══██╗██║      "
+	@echo "███████║ █████╔╝    █████╗  ██████╔╝███████║██║        ██║█████╗██║   ██║██║      "
+	@echo "╚════██║██╔═══╝     ██╔══╝  ██╔══██╗██╔══██║██║        ██║╚════╝██║   ██║██║      "
+	@echo "     ██║███████╗    ██║     ██║  ██║██║  ██║╚██████╗   ██║      ╚██████╔╝███████╗ "
+	@echo "     ╚═╝╚══════╝    ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝   ╚═╝       ╚═════╝ ╚══════╝ "
+	@echo "               				2024/05/01 - ismherna@student.42.fr - 42 Madrid - Ismael Hernández      "                                                                                                                                       
                                                                                                                                              
 
 bonus: all

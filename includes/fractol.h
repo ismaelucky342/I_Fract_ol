@@ -1,70 +1,57 @@
 
+
 #ifndef FRACTOL_H
-#  define FRACTOL_H
+# define FRACTOL_H
 # include <math.h>
 # include <mlx.h>
+# include "../libft/libft.h"
 
-# define W 800
-# define H 800
+# define WIDTH	800
+# define HEIGHT	800
 
-/*--------------Posicion en el fractal---------------*/
-typedef struct possition
+typedef struct pos
 {
-    double x; 
-    double y; 
-    double zoom; 
-    
-}   t_position;
+	double	x;
+	double	y;
+	double	zoom;
+}	t_position;
 
-/*---------------Numeros Imaginarios------------------*/
-/*se crea una recta en paralelo y el fractal va ella*/
-typedef struct s_imaginary
+typedef struct s_img
 {
-    double      real; 
-    double      imaginary; 
-}      t_imaginary;
+	void	*img;
+	char	*pix;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_img;
 
-
-/*----------------Estructura de imagen------------------*/
-
-typedef struct s_imagen
+typedef struct s_data
 {
-    void    *imagen;
-    char    *pixel; 
-    int     bits; 
-    int     l_len; 
-    int     endian;//sin usar
-}       t_imagen; 
-
-/*-------------------mlx data--------------------------*/
-
-typedef struct s_mlx_data
-{
-    void	*mlx_pointer; //apuntar a la MiniLibX
-	void	*windows_generator_pointer;//manipulacion de ventanasw
-    void     (*func)(struct s_data *, int, int);
-	int		iterador;
-	int		color_index;
+	void			*mlx_ptr;
+	void			*win_ptr;
+	void			(*func)(struct s_data *, int, int);
+	int				iter;
+	int				color_i;
 	unsigned int	color[4];
-	t_position	position;
-	t_imagen 	imagen;
-}       t_mlx_data;  //nombre
+	t_position		pos;
+	t_img			img;
+}	t_data;
 
-/*-----------------------Fractol Build------------------*/
+typedef struct s_complex
+{
+	double	r;
+	double	i;
+}	t_complex;
 
-int     key_handle(int keys, t_mlx_data *data1);
-int		mouse_vision(int mouse, int x, int y, t_mlx_data *data);
-int     escape(t_mlx_data *data); 
-void	iterator(t_mlx_data *data);
-void    pixel_put(t_imagen, int x,int y, int color); //lo que colorea
-double  imaginary_converter(double current, double n1, double n2); //parseo convertidor
-double  imaginaru_calculator(double y, double n3, double n4); //calculo paralela
-int     deep(t_imaginary *z, t_imaginary *c, t_mlx_data *d);
-
-/* ------------------------Fractals----------------------*/
-
-void	mandelgroot(t_mlx_data *data, int x, int y); 
-void	julia(t_mlx_data *data, int x, int y); 
-void    burning_ship(t_mlx_data *data, int x, int y); 
-
+void	draw_mandelbrot(t_data *data, int x, int y);
+void	draw_julia(t_data *data, int x, int y);
+int		on_keypress(int keysym, t_data *data1);
+int		close_on_escape(t_data *data);
+void	iterate_screen(t_data *data);
+void	ft_put_pixel(t_img img, int x, int y, int color);
+double	map(double ratio, double b1, double b2);
+double	calculate_ratio(double y, double a1, double a2);
+int		calc_bright(t_complex *z, t_complex *c, t_data *d);
+int		mouse_hook(int mouse_code, int x, int y, t_data *data);
+void	draw_newton(t_data *data, int x, int y);
 #endif
