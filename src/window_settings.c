@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_settings.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apollo <apollo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 20:33:50 by ismherna          #+#    #+#             */
-/*   Updated: 2024/10/29 20:33:59 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/11/15 18:14:31 by apollo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,20 @@ int	on_keypress(int keysym, t_data *data)
 	iterate_screen(data);
 	return (keysym);
 }
+/*
+Si mouse_code es 4, se hace zoom in (acercar) multiplicando data->pos.zoom por 0.7.
+Si mouse_code es 5, se hace zoom out (alejar) dividiendo data->pos.zoom por 0.7.
+Ajuste de la posición en el eje X:
+
+Si se hace zoom in (mouse_code == 4 o mouse_code == 1) y el cursor está a la derecha del centro de la pantalla (x > WIDTH / 2), se incrementa data->pos.x en data->pos.zoom * 0.2.
+Si se hace zoom out (mouse_code == 5) y el cursor está a la izquierda del centro de la pantalla (x < WIDTH / 2), también se incrementa data->pos.x en data->pos.zoom * 0.2.
+En los casos contrarios, se decrementa data->pos.x en data->pos.zoom * 0.2.
+Ajuste de la posición en el eje Y:
+
+Si se hace zoom in (mouse_code == 4 o mouse_code == 1) y el cursor está por encima del centro de la pantalla (y < HEIGHT / 2), se decrementa data->pos.y en data->pos.zoom * 0.2.
+Si se hace zoom out (mouse_code == 5) y el cursor está por debajo del centro de la pantalla (y > HEIGHT / 2), también se decrementa data->pos.y en data->pos.zoom * 0.2.
+En los casos contrarios, se incrementa data->pos.y en data->pos.zoom * 0.2.
+*/
 
 int	mouse_hook(int mouse_code, int x, int y, t_data *data)
 {
