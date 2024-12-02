@@ -26,16 +26,16 @@ $> ./fractol Mandelbox
 ```
 ## Pictures
 ### Mandelbrot
+![image](https://github.com/user-attachments/assets/00ba2326-109c-4669-b33d-90a1fa209fb0)
 
-![image](https://github.com/ismaelucky342/fract-ol/assets/153450550/868b9d19-cc03-484e-8f78-8a37f27668af)
 ### BurningShip
-![image](https://github.com/ismaelucky342/fract-ol/assets/153450550/d012a914-708e-4e92-9578-2563a0dbda2a)
+![image](https://github.com/user-attachments/assets/cd888a86-9bda-4739-82a7-0114b4fdc13a)
 
 ### Julia
-![image](https://github.com/ismaelucky342/fract-ol/assets/153450550/0b21966e-207d-47d7-bb99-6bb1c8bad2fe)
+![image](https://github.com/user-attachments/assets/49073502-95d7-418d-8d36-eefcb13afdba)
 
 ### Mandelbox
-![image](https://github.com/ismaelucky342/fract-ol/assets/153450550/01d7bd1d-3fc8-4be1-b97b-27bc5ec4fee0)
+![image](https://github.com/user-attachments/assets/2ec6f8b4-6eb5-4dad-9232-306c2ff96d4c)
 
 
 # Extras 
